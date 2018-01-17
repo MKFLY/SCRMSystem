@@ -1,0 +1,1 @@
+a:4:{s:7:"jsCache";a:0:{}s:8:"cssCache";a:0:{}s:10:"imageCache";a:3:{s:9:"blank.png";s:30:"themes/SuiteR/images/blank.gif";s:26:"sugar-yui-sprites-grey.png";s:47:"themes/SuiteR/images/sugar-yui-sprites-grey.png";s:9:"Users.gif";s:30:"themes/SuiteR/images/Users.png";}s:13:"templateCache";a:0:{}}

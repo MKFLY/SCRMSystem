@@ -1,0 +1,332 @@
+<!--
+/**
+ *
+ * SugarCRM Community Edition is a customer relationship management program developed by
+ * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2017 SalesAgility Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License version 3 as published by the
+ * Free Software Foundation with the addition of the following permission added
+ * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+ * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
+ * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with
+ * this program; if not, see http://www.gnu.org/licenses or write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA.
+ *
+ * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
+ * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
+ *
+ * The interactive user interfaces in modified source and object code versions
+ * of this program must display Appropriate Legal Notices, as required under
+ * Section 5 of the GNU Affero General Public License version 3.
+ *
+ * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
+ * these Appropriate Legal Notices must retain the display of the "Powered by
+ * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
+-->
+<!-- BEGIN: Quote_Subject -->
+<p>报价-{QUOTE_SUBJECT}</p>
+<!-- END: Quote_Subject -->
+<!-- BEGIN: Quote -->
+<p><b>{ASSIGNER}</b> 已将报价分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+主题：{QUOTE_SUBJECT}<br />
+状态：{QUOTE_STATUS}<br />
+预计截至日期：{QUOTE_CLOSEDATE}<br />
+说明：{QUOTE_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此报价</a>.</p>
+<!-- END: Quote -->
+
+<!-- BEGIN: Account_Subject -->
+<p>客户-{ACCOUNT_NAME}</p>
+<!-- END: Account_Subject -->
+<!-- BEGIN: Account -->
+<p><b>{ASSIGNER}</b> 已将客户分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+名称：{ACCOUNT_NAME}<br />
+类型：{ACCOUNT_TYPE}<br />
+说明：{ACCOUNT_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此客户</a>.</p>
+<!-- END: Account -->
+
+<!-- BEGIN: Case_Subject -->
+<p>客户反馈-{CASE_SUBJECT}</p>
+<!-- END: Case_Subject -->
+<!-- BEGIN: Case -->
+<p><b>{ASSIGNER}</b> 已将客户反馈分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+主题：{CASE_SUBJECT}<br />
+优先级：{CASE_PRIORITY}<br />
+状态：{CASE_STATUS}<br />
+说明：{CASE_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此客户反馈</a>.</p>
+<!-- END: Case -->
+
+<!-- BEGIN: Task_Subject -->
+<p>任务-{TASK_SUBJECT}</p>
+<!-- END: Task_Subject -->
+<!-- BEGIN: Task -->
+<p><b>{ASSIGNER}</b> 已将任务分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+主题：{TASK_SUBJECT}<br />
+优先级：{TASK_PRIORITY}<br />
+截止日期：{TASK_DUEDATE}<br />
+状态：{TASK_STATUS}<br />
+说明：{TASK_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此任务</a>.</p>
+<!-- END: Task -->
+
+<!-- BEGIN: Meeting_Subject -->
+<p>会议-{MEETING_SUBJECT}</p>
+<!-- END: Meeting_Subject -->
+<!-- BEGIN: Meeting -->
+<p>收件人: {MEETING_TO}</p>
+<p><b>{ASSIGNER}</b> 邀请您参加一个会议</p>
+<p>
+主题：{MEETING_SUBJECT}<br />
+地点：{MEETING_LOCATION}<br />
+开始日期：{MEETING_STARTDATE}<br />
+结束日期：{MEETING_ENDDATE}
+</p>
+<p>
+<!-- BEGIN: Meeting_External_API -->
+会议 URL：{MEETING_URL}
+</p>
+<!-- END: Meeting_External_API -->
+<p>说明：{MEETING_DESCRIPTION}<br />
+</p>
+<p>---</p>
+<p><a href={ACCEPT_URL}&accept_status=accept>接受此会议</a>.</p>
+<p><a href={ACCEPT_URL}&accept_status=tentative>暂时接受此会议</a>.</p>
+<p><a href={ACCEPT_URL}&accept_status=decline>拒绝此会议</a>.</p>
+<!-- END: Meeting -->
+
+<!-- BEGIN: MeetingSpecial_Subject -->
+<p>会议-{MEETING_SUBJECT}</p>
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingSpecial -->
+<p><b>{ASSIGNER}</b> 已将会议分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+主题：{MEETING_SUBJECT}<br />
+地点：{MEETING_LOCATION}<br />
+状态：{MEETING_STATUS}<br />
+开始日期：{MEETING_STARTDATE}<br />
+结束日期：{MEETING_ENDDATE}<br />
+说明：{MEETING_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此会议</a>.</p>
+<!-- END: MeetingSpecial -->
+
+<!-- BEGIN: MeetingReminder_Subject -->
+<p>会议提醒-{MEETING_SUBJECT}</p>
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingReminder -->
+<p>
+    主题： MEETING_SUBJECT}<br />
+    时间：{MEETING_STARTDATE}<br />
+    地点：{MEETING_LOCATION}<br />
+    创建人：{MEETING_CREATED_BY}
+</p>
+<!-- END: MeetingReminder -->
+
+<!-- BEGIN: Email_Subject -->
+<p>邮件-{EMAIL_SUBJECT}</p>
+<!-- END: Email_Subject -->
+<!-- BEGIN: Email -->
+<p><b>{ASSIGNER}</b> 已将邮件分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+主题：{EMAIL_SUBJECT}<br />
+发送日期：{EMAIL_DATESENT}
+</p>
+<p>您可以 <a href={URL}>查看此邮件</a>.</p>
+<!-- END: Email -->
+
+<!-- BEGIN: Contact_Subject -->
+<p>联系人-{CONTACT_NAME}</p>
+<!-- END: Contact_Subject -->
+<!-- BEGIN: Contact -->
+<p><b>{ASSIGNER}</b> 已将联系人分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+名称：{CONTACT_NAME}<br />
+说明：{CONTACT_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此联系人</a>.</p>
+<!-- END: Contact -->
+
+<!-- BEGIN: Lead_Subject -->
+<p>潜在客户-{LEAD_NAME}</p>
+<!-- END: Lead_Subject -->
+<!-- BEGIN: Lead -->
+<p><b>{ASSIGNER}</b> 已将潜在客户分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+名称：{LEAD_NAME}<br />
+来源：{LEAD_SOURCE}<br />
+状态：{LEAD_STATUS}<br />
+说明：{LEAD_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此潜在客户</a>.</p>
+<!-- END: Lead -->
+
+<!-- BEGIN: Opportunity_Subject -->
+<p>商业机会-{OPPORTUNITY_NAME}</p>
+<!-- END: Opportunity_Subject -->
+<!-- BEGIN: Opportunity -->
+<p><b>{ASSIGNER}</b> 已将商业机会分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+商业机会：{OPPORTUNITY_NAME}<br />
+金额：{OPPORTUNITY_AMOUNT}<br />
+预计截止日期：{OPPORTUNITY_CLOSEDATE}<br />
+销售阶段：{OPPORTUNITY_STAGE}<br />
+说明：{OPPORTUNITY_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此商业机会</a>.</p>
+<!-- END: Opportunity -->
+
+<!-- BEGIN: Bug_Subject -->
+<p>Bug-{BUG_SUBJECT}</p>
+<!-- END: Bug_Subject -->
+<!-- BEGIN: Bug -->
+<p><b>{ASSIGNER}</b> 已将 Bug 分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+Bug 编号：{BUG_BUG_NUMBER}<br />
+主题：{BUG_SUBJECT}<br />
+类型：{BUG_TYPE}<br />
+优先级：{BUG_PRIORITY}<br />
+状态：{BUG_STATUS}<br />
+分析：{BUG_RESOLUTION}<br />
+版本：{BUG_RELEASE}<br />
+说明：{BUG_DESCRIPTION}<br />
+工作日志：{BUG_WORK_LOG}
+</p>
+<p>您可以 <a href={URL}>查看此 Bug</a>.</p>
+<!-- END: Bug -->
+
+<!-- BEGIN: Default_Subject -->
+<p>已分配-{OBJECT}</p>
+<!-- END: Default_Subject -->
+<!-- BEGIN: Default -->
+<p><b>{ASSIGNER}</b> 已将 {OBJECT} 分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>您可以 <a href={URL}>查看此 {OBJECT}</a>.</p>
+<!-- END: Default -->
+
+<!-- BEGIN: Call_Subject -->
+<p>电话-{CALL_SUBJECT}</p>
+<!-- END: Call_Subject -->
+<!-- BEGIN: Call -->
+<p>To: {CALL_TO}</p>
+<p><b>{ASSIGNER}</b> 邀请您参加电话</p>
+<p>
+主题：{CALL_SUBJECT}<br />
+状态：{CALL_STATUS}<br />
+开始日期：{CALL_STARTDATE}<br />
+期限：{CALL_HOURS}时, {CALL_MINUTES}分<br />
+说明：{CALL_DESCRIPTION}<br />
+</p>
+<p>---</p>
+<p><a href={ACCEPT_URL}&accept_status=accept>接受此电话</a>.</p>
+<p><a href={ACCEPT_URL}&accept_status=tentative>暂时接受此电话</a>.</p>
+<p><a href={ACCEPT_URL}&accept_status=decline>拒绝此电话</a>.</p>
+<!-- END: Call -->
+
+<!-- BEGIN: CallSpecial_Subject -->
+<p>电话-{CALL_SUBJECT}</p>
+<!-- END: CallSpecial_Subject -->
+<!-- BEGIN: CallSpecial -->
+<p><b>{ASSIGNER}</b> 已将电话分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+主题：{CALL_SUBJECT}<br />
+状态：{CALL_STATUS}<br />
+开始日期：{CALL_STARTDATE}<br />
+期限：{CALL_HOURS}时, {CALL_MINUTES}分<br />
+说明：{CALL_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此电话</a>.</p>
+<!-- END: CallSpecial -->
+
+<!-- BEGIN: CallReminder_Subject -->
+<p>电话提醒-{CALL_SUBJECT}</p>
+<!-- END: CallReminder_Subject -->
+<!-- BEGIN: CallReminder -->
+<p>
+    主题：{CALL_SUBJECT}<br />
+    时间：{CALL_STARTDATE}<br />
+    创建人：{CALL_CREATED_BY}
+</p>
+<!-- END: CallReminder -->
+
+<!-- BEGIN: Campaign_Subject -->
+<p>营销活动-{CAMPAIGN_NAME}</p>
+<!-- END: Campaign_Subject -->
+<!-- BEGIN: Campaign -->
+<p><b>{ASSIGNER}</b> 已将营销活动分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+主题：{CAMPAIGN_NAME}<br />
+金额：{CAMPAIGN_AMOUNT}<br />
+关闭日期：{CAMPAIGN_CLOSEDATE}<br />
+状态：{CAMPAIGN_STATUS}<br />
+说明：{CAMPAIGN_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此营销活动</a>.</p>
+<!-- END: Campaign -->
+
+<!-- BEGIN: Quota_Subject -->
+<p>配额-{QUOTA_TIMEPERIOD}</p>
+<!-- END: Quota_Subject -->
+<!-- BEGIN: Quota -->
+<p><b>{ASSIGNER}</b> 已将配额分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>
+金额： {QUOTA_AMOUNT}<br />
+时限：{QUOTA_TIMEPERIOD}
+</p>
+<p>您可以 <a href={QUOTA_URL}>查看此配额分配</a>.</p>
+<!-- END: Quota -->
+
+<!-- BEGIN: KBDocument_Subject -->
+<p>文档-{KBDOCUMENT_NAME}</p>
+<!-- END: KBDocument_Subject -->
+<!-- BEGIN: KBDocument -->
+{NOTIFICATION_MESSAGE}
+
+<p>
+名称：{KBDOCUMENT_NAME}<br />
+创建日期：{KBDOCUMENT_DATE_CREATED}<br />
+创建人：{KBDOCUMENT_CREATED_BY}<br />
+状态：{KBDOCUMENT_STATUS}<br />
+说明：{KBDOCUMENT_DESCRIPTION}
+</p>
+<p>您可以 <a href={URL}>查看此文档</a>.</p>
+<!-- END: KBDocument -->
+
+<!-- BEGIN: Contract_Subject -->
+<p>合同-{CONTRACT_NAME}</p>
+<!-- END: Contract_Subject -->
+<!-- BEGIN: Contract-->
+<p><b>{ASSIGNER}</b> 已将合同分配给 <b>{ASSIGNED_USER}</b>.</p>
+<p>您可以 <a href={URL}>查看此合同</a>.</p>
+<!-- END:Contract-->
+
+<!-- BEGIN: ContractSpecial_Subject -->
+<p>合同-{CONTRACT_NAME}</p>
+<!-- END: ContractSpecial_Subject -->
+<!-- BEGIN: ContractSpecial -->
+<p>您的合同：{CONTRACT_NAME} 将在 {CONTRACT_END_DATE} 到期。</p>
+<p>您可以 <a href={URL}>查看此合同</a>.</p>
+<!-- END:ContractSpecial-->

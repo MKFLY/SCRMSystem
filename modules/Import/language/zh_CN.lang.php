@@ -1,0 +1,241 @@
+<?php
+/**
+ *
+ * SugarCRM Community Edition is a customer relationship management program developed by
+ * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2017 SalesAgility Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License version 3 as published by the
+ * Free Software Foundation with the addition of the following permission added
+ * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+ * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
+ * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with
+ * this program; if not, see http://www.gnu.org/licenses or write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA.
+ *
+ * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
+ * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
+ *
+ * The interactive user interfaces in modified source and object code versions
+ * of this program must display Appropriate Legal Notices, as required under
+ * Section 5 of the GNU Affero General Public License version 3.
+ *
+ * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
+ * these Appropriate Legal Notices must retain the display of the "Powered by
+ * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
+
+$mod_strings = array (
+    'LBL_RECORDS_SKIPPED_DUE_TO_ERROR' => '行由于错误而未导入',
+    'LBL_UPDATE_SUCCESSFULLY' => '记录已更新',
+    'LBL_SUCCESSFULLY_IMPORTED' => '记录创建成功',
+    'LBL_STEP_4_TITLE' => '步骤 {0}：导入数据',
+    'LBL_STEP_5_TITLE' => '步骤 {0}：查看导入结果',
+    'LBL_CUSTOM_ENCLOSURE' => '限定的字段：',
+    'LBL_ERROR_UNABLE_TO_PUBLISH' => '无法发布。与另一个已发布的名称相同。',
+    'LBL_ERROR_UNABLE_TO_UNPUBLISH' => '无法取消发布属于其他用户的映射，您已有同名的导入映射。',
+    'LBL_ERROR_IMPORTS_NOT_SET_UP' => '此模块类型未设置导入',
+    'LBL_IMPORT_TYPE' => '导入类型',
+    'LBL_IMPORT_BUTTON' => '仅创建新记录',
+    'LBL_UPDATE_BUTTON' => '创建并更新现有记录',
+    'LBL_CREATE_BUTTON_HELP' => '使用此选项创建新记录。注意：如果导入的值映射到 ID 字段，导入文件中包含与现有记录 ID 匹配的行将不被导入。',
+    'LBL_UPDATE_BUTTON_HELP' => '使用此选项更新现有记录。导入文件中的数据将根据导入文件中的记录 ID 与现有记录进行匹配。',
+    'LBL_ERROR_INVALID_BOOL'=>'无效的布尔值（0或1）',
+    'LBL_IMPORT_ERROR' => '发生导入错误',
+    'LBL_ERROR' => '错误',
+    'LBL_FIELD_NAME' => '字段',
+    'LBL_VALUE' => '值',
+    'LBL_NONE' => '无',
+    'LBL_REQUIRED_VALUE' => '缺少必填的值',
+    'LBL_ERROR_SYNC_USERS' => '同步到Outlook时出现无效数据: ',
+    'LBL_ID_EXISTS_ALREADY' => 'ID 已在此表中',
+    'LBL_ASSIGNED_USER' => '如果用户不存在将使用当前用户',
+    'LBL_ERROR_DELETING_RECORD' => '删除记录错误:',
+    'LBL_ERROR_INVALID_ID' => '无效的ID（最长36个字符）',
+    'LBL_ERROR_INVALID_PHONE' => '无效的电话号码',
+    'LBL_ERROR_INVALID_NAME' => '无效的名称（字符串过长）',
+    'LBL_ERROR_INVALID_VARCHAR' => '无效的文本（字符串过长）',
+    'LBL_ERROR_INVALID_DATE' => '无效的日期',
+    'LBL_ERROR_INVALID_DATETIME' => '无效的日期时间',
+    'LBL_ERROR_INVALID_DATETIMECOMBO' => '无效的日期时间',
+    'LBL_ERROR_INVALID_TIME' => '无效的时间',
+    'LBL_ERROR_INVALID_INT' => '无效的整数值',
+    'LBL_ERROR_INVALID_NUM' => '无效的数字值',
+    'LBL_ERROR_INVALID_EMAIL'=>'无效的邮件地址',
+    'LBL_ERROR_INVALID_USER'=>'无效的用户名或 ID',
+    'LBL_ERROR_INVALID_TEAM' => '无效的团队名称或 ID',
+    'LBL_ERROR_INVALID_ACCOUNT' => '无效的账户名称或 ID',
+    'LBL_ERROR_INVALID_RELATE' => '无效的关联字段',
+    'LBL_ERROR_INVALID_CURRENCY' => '无效的货币值',
+    'LBL_ERROR_INVALID_FLOAT' => '无效的浮点数',
+    'LBL_ERROR_NOT_IN_ENUM' => '值不在下拉列表内. 允许的值是: ',
+    'LBL_IMPORT_MODULE_ERROR_NO_UPLOAD' => '文件上传失败。可能是由于 upload_max_filesize 参数设置过小，请修改 php.ini 配置文件或通过其他途径修改 upload_max_filesize 的值。',
+    'LBL_MODULE_NAME' => '导入',
+    'LBL_TRY_AGAIN' => '重试',
+    'LBL_IMPORT_ERROR_MAX_REC_LIMIT_REACHED' => '数据文件有 {0} 行数据。超过 {1} 行将导致导入过程变慢。点击 确定 继续导入。点击 取消 重新上传数据文件。',
+    'ERR_IMPORT_SYSTEM_ADMININSTRATOR'  => '不能导入系统管理员',
+    'ERR_MULTIPLE' => '多个字段使用同样的字段名称',
+    'ERR_MISSING_REQUIRED_FIELDS' => '缺少必填字段',
+    'ERR_SELECT_FILE' => '选择要上传的文件。',
+    'LBL_SELECT_FILE' => '选择文件',
+    'LBL_EXTERNAL_SOURCE' => '一个外部应用程序或服务',
+    'LBL_CUSTOM_DELIMITER' => '字段定界符:',
+    'LBL_DONT_MAP' => '--不要对应此字段--',
+    'LBL_STEP_MODULE' => '选择要导入数据的模块',
+    'LBL_STEP_1_TITLE' => '步骤 1：选择模块',
+    'LBL_CONFIRM_TITLE' => '步骤 {0}: 确认导入文件属性',
+    'LBL_MICROSOFT_OUTLOOK' => 'Microsoft Outlook',
+    'LBL_MICROSOFT_OUTLOOK_HELP' => '从微软Outlook导入数据时，数据文件必须是用逗号分隔(.csv)。如果你的文件是用制表符分隔的，导入将会产生不可预料的结果。',
+    'LBL_SALESFORCE' => 'Salesforce.com',
+    'LBL_PUBLISH' => '发布',
+    'LBL_DELETE' => '删除',
+    'LBL_PUBLISHED_SOURCES' => '发布的来源:',
+    'LBL_UNPUBLISH' => '不发布',
+    'LBL_NEXT' => '下一步',
+    'LBL_BACK' => '返回',
+    'LBL_STEP_2_TITLE' => '步骤 {0}：上传数据文件',
+    'LBL_HAS_HEADER' => '包含标题',
+    'LBL_NUM_1' => '1.',
+    'LBL_NUM_2' => '2.',
+    'LBL_NUM_3' => '3.',
+    'LBL_NUM_4' => '4.',
+    'LBL_NUM_5' => '5.',
+    'LBL_NUM_6' => '6.',
+    'LBL_NUM_7' => '7.',
+    'LBL_NUM_8' => '8.',
+    'LBL_NUM_9' => '9.',
+    'LBL_NUM_10' => '10.',
+    'LBL_NUM_11' => '11.',
+    'LBL_NUM_12' => '12.',
+    'LBL_NOTES' => '备忘录',
+    'LBL_STEP_3_TITLE' => '步骤 {0}：确认字段映射',
+    'LBL_STEP_DUP_TITLE' => '步骤 {0}：检查重复数据',
+    'LBL_DATABASE_FIELD' => '数据库字段',
+    'LBL_HEADER_ROW' => '标题行',
+    'LBL_HEADER_ROW_OPTION_HELP' => '选择数据文件的第一行是不是数据字段标题。',
+    'LBL_ROW' => '列',
+    'LBL_CONTACTS_NOTE_1' => '必须指定姓或名。',
+    'LBL_CONTACTS_NOTE_2' => '如果指定了全名，姓与名字段则会忽略。',
+    'LBL_CONTACTS_NOTE_3' => '如果指定了全名，该字段中的记录会自动被切割成姓与名两个个字段。',
+    'LBL_CONTACTS_NOTE_4' => '街道2与街道3字段在导入数据库时会与第一个街道字段合并。',
+    'LBL_ACCOUNTS_NOTE_1' => '您必须指定对应的客户名称。',
+    'LBL_IMPORT_NOW' => '现在导入',
+    'LBL_' => '',
+    'LBL_CANNOT_OPEN' => '不能打开读取导入的文件',
+    'LBL_NO_LINES' => '您导入的文件沒有任何记录',
+    'LBL_SUCCESS' => '成功',
+    'LBL_LAST_IMPORT_UNDONE' => '您上次的导入没有成功',
+    'LBL_NO_IMPORT_TO_UNDO' => '沒有导入的记录可以还原。',
+    'LBL_CREATED_TAB' => '创建的记录',
+    'LBL_DUPLICATE_TAB' => '重复数据',
+    'LBL_ERROR_TAB' => '错误',
+    'LBL_IMPORT_MORE' => '继续导入',
+    'LBL_FINISHED' => '已完成',
+    'LBL_UNDO_LAST_IMPORT' => '恢复上次导入',
+    'LBL_DUPLICATES' => '发现重复记录',
+    'LNK_DUPLICATE_LIST' => '下载重复列表',
+    'LNK_ERROR_LIST' => '下载错误列表',
+    'LNK_RECORDS_SKIPPED_DUE_TO_ERROR' => '下载不能导入的记录.',
+    'LBL_INDEX_USED' => '已使用的索引',
+    'LBL_INDEX_NOT_USED' => '未使用的索引',
+    'LBL_IMPORT_FIELDDEF_ID' => 'ID',
+    'LBL_IMPORT_FIELDDEF_RELATE' => '关联',
+    'LBL_IMPORT_FIELDDEF_PHONE' => '电话号码',
+    'LBL_IMPORT_FIELDDEF_TEAM_LIST' => '团队列表',
+    'LBL_IMPORT_FIELDDEF_NAME' => '名称',
+    'LBL_IMPORT_FIELDDEF_VARCHAR' => '字符串',
+    'LBL_IMPORT_FIELDDEF_TEXT' => '文本',
+    'LBL_IMPORT_FIELDDEF_TIME' => '时间',
+    'LBL_IMPORT_FIELDDEF_DATE' => '日期',
+    'LBL_IMPORT_FIELDDEF_ASSIGNED_USER_NAME' => '负责人',
+    'LBL_IMPORT_FIELDDEF_BOOL' => '布尔值 0 或 1',
+    'LBL_IMPORT_FIELDDEF_ENUM' => '列表',
+    'LBL_IMPORT_FIELDDEF_EMAIL' => 'EMail 地址',
+    'LBL_IMPORT_FIELDDEF_INT' => '整数',
+    'LBL_IMPORT_FIELDDEF_DOUBLE' => '双精度',
+    'LBL_IMPORT_FIELDDEF_NUM' => '数字',
+    'LBL_IMPORT_FIELDDEF_CURRENCY' => '货币',
+    'LBL_IMPORT_FIELDDEF_FLOAT' => '浮点数',
+    'LBL_DATE_FORMAT' => '日期格式',
+    'LBL_TIME_FORMAT' => '时间格式',
+    'LBL_TIMEZONE' => '时区',
+    'LBL_ADD_ROW' => '添加字段',
+    'LBL_REMOVE_ROW' => '移除字段',
+    'LBL_DEFAULT_VALUE' => '默认值',
+    'LBL_SHOW_ADVANCED_OPTIONS' => '显示高级选项',
+    'LBL_HIDE_ADVANCED_OPTIONS' => '隐藏高级选项',
+    'LBL_SHOW_NOTES' => '显示备忘录',
+    'LBL_HIDE_NOTES' => '隐藏备忘录',
+    'LBL_SAVE_MAPPING_AS' => '保存映射为',
+    'LBL_IMPORT_COMPLETE' => '导入完成',
+    'LBL_IMPORT_COMPLETED' => '导入完成',
+    'LBL_IMPORT_RECORDS' => '导入记录',
+    'LBL_IMPORT_RECORDS_OF' => '的',
+    'LBL_IMPORT_RECORDS_TO' => '到',
+    'LBL_CURRENCY' => '货币',
+	'LBL_CURRENCY_SIG_DIGITS' => '货币位数',
+    'LBL_NUMBER_GROUPING_SEP' => '千分符',
+    'LBL_DECIMAL_SEP' => '小数点符号',
+    'LBL_LOCALE_DEFAULT_NAME_FORMAT' => '名称显示格式',
+    'LBL_LOCALE_EXAMPLE_NAME_FORMAT' => '示例',
+    'LBL_LOCALE_NAME_FORMAT_DESC' => 's = 称谓 f = 名字 l = 姓氏',
+    'LBL_CHARSET' => '字符集',
+    'LBL_MY_SAVED_HELP' => '一个已保存的映射在数据文件中指定了一个过去使用的过的数据源到数据库的映射组合.<br/>单击发布使映射对其他用户可用.<br/>单击撤销发布是映射对其他用户不可用.',
+    'LBL_MY_SAVED_ADMIN_HELP' => '使用这个选项来选择一个预设导入设定，包括导入属性、字段映射重复记录检查等设定。<br><br>点击 <b>发布</b>按钮使别的用户也能使用你的设定。<br>点击 <b>取消发布</b>按钮使别的用户访问不到该设定.<br>点击 <b>删除</b>按钮删除设定，删除后所有用户都将访问不到该设定。',
+    'LBL_ENCLOSURE_HELP' => '有效的<b>限定符</b>是用来定界数据内容的.<br/><br/>例如:如果分隔符是逗号(,)并且限定符是双引号("),<b>"Cupertino, California"</b>被导入到一个字段并显示为<b>Cupertino,California</b>.<br/>如果没有限定符或者限定符是其他,<b>"Cupertino,California"</b>会被导入为两个邻接的字段<b>"Cupertino</b>和<b>California"</b>.<br/><br/>注意:数据文件可能不包括任何限定符.<br/>在Excel总创建的逗号和制表符分隔的文件默认使用双引号做限定符.',
+    'LBL_DATABASE_FIELD_HELP' => '从模块的数据库表中选择一个存在字段S.',
+    'LBL_HEADER_ROW_HELP' => '这是有字段名称的数据文件的第一行字段名称数据.',
+    'LBL_DEFAULT_VALUE_HELP' => '如果导入文件中的字段不包含数据，则指定用于创建或更新记录字段的默认值。',
+    'LBL_ROW_HELP' => '这是没有字段名称的数据文件的第一行数据.',
+    'LBL_SAVE_MAPPING_HELP' => '为以上数据文件的数据库字段映射输入一个名字.<br/>这些字段包括字段顺序和在导入第一步中选择的数据源.<br/>保存的映射可以在下次导入第一步时被使用.',
+    'LBL_IMPORT_FILE_SETTINGS_HELP' => '在数据文件中指定设置确保数据被正确导入.这些设置不会覆盖您的个人偏好.被创建或更新的记录会存有您我的帐号中的设置.',
+    'LBL_IMPORT_STARTED' => '开始导入：',
+    'LBL_RECORD_CANNOT_BE_UPDATED' => '由于权限问题，此记录不能被更新.',
+    'LBL_DELETE_MAP_CONFIRMATION' => '您确定要删除此保存的导入设置？',
+    'LBL_THIRD_PARTY_CSV_SOURCES' => '如果数据文件是从下列源导出的，请选择一个。',
+    'LBL_THIRD_PARTY_CSV_SOURCES_HELP' => '选择源可以自动应用定制的映射，简化导入过程(下一步)。',
+    'LBL_EXAMPLE_FILE' => '下载数据文件模板',
+    'LBL_CONFIRM_IMPORT' => '您选择了在导入过程中更新记录。更新记录将无法撤销。但是，导入过程中创建的记录可以撤销（删除）。点击“取消”按钮可以选择只创建新纪录，或者点击“确定”按钮继续。',
+    'LBL_CONFIRM_MAP_OVERRIDE' => '警告：您已经选择了导入的自定义标记，是否继续？',
+    'LBL_SAMPLE_URL_HELP' => '现在一个导入实例文件，包含一行模块字段的标题行。你可以使用这个文件作为模板来创建数据文件。',
+    'LBL_AUTO_DETECT_ERROR' => '无法检测到数据文件的字段分隔符和定界符。请检查导入设定。',
+    'LBL_MIME_TYPE_ERROR_1' => '所选文件似乎不包含分隔列表，请检查文件类型。我们建议使用以逗号分隔的 .csv 文件。',
+    'LBL_MIME_TYPE_ERROR_2' => '要继续导入所选文件，请点击确定。要上传新文件，请点击重试。',
+    'LBL_FIELD_DELIMETED_HELP' => '字段分隔符将被用来拆分每一行的数据。',
+    'LBL_FILE_UPLOAD_WIDGET_HELP' => '选择一个用逗号或者制表符分隔的数据文件。推荐使用 .csv 类型的文件。',
+    'LBL_ERROR_IMPORT_CACHE_NOT_WRITABLE' => '导入缓存目录无法写入。',
+    'LBL_ADD_FIELD_HELP' => '使用此选项来添加一个新的字段到所有记录（新建或更新）。选择字段，然后输入或者选择一个默认值。',
+    'LBL_MISSING_HEADER_ROW' => '未发现标题行',
+    'LBL_CANCEL' => '取消',
+    'LBL_SELECT_DS_INSTRUCTION' => '开始进行导入吗？选择你要导入的数据源。',
+    'LBL_SELECT_UPLOAD_INSTRUCTION' => '选一个要导入的数据文件，或者下载一个数据模板文件参考并创建一个数据文件。',
+    'LBL_SELECT_PROPERTY_INSTRUCTION' => '这是检查到的数据文件的前几行。如果检测到标题行，将会显示在表格的第一行。查看导入数据文件属性，调整设置以检测属性和设置额外的属性。更新设置将会更新表格中的数据显示。',
+    'LBL_SELECT_MAPPING_INSTRUCTION' => '下列表格包含该模块的所有字段，可以把导入数据文件里的数据与这些字段映射。如果文件包含一个标题行，将使用标题映射字段。请检查映射关系， 确定是您期望的结果，如果不是请进行调整。为帮助您检查映射关系，数据文件里第一行已经显示出来。请确保映射了所有必选字段（* 表示必选字段）。',
+    'LBL_SELECT_DUPLICATE_INSTRUCTION' => '为避免创建重复记录，选择在导入时用来检测重复记录的字段。已有记录里如果已有这些值，将视为重复记录。重复记录将现在出来(下一页)。然后你就可以选择这些记录觉得是否进行导入。',
+    'LBL_DUP_HELP' => '这里是因为在做重复检查时，包含映射设置的重复信息而没有导入的记录。检查到的重复数据以高亮显示。你可以下载这个列表，修改数据然后点击<b>重新导入</b>重新导入数据。',
+    'LBL_SUMMARY' => '摘要',
+    'LBL_OK' => '确定',
+    'LBL_ERROR_HELP' => '这里是因为在做重复检查时，包含出错而没有导入的记录。你可以下载这个列表，修改数据然后点击<b>重新导入</b>重新导入数据。',
+    'LBL_EXTERNAL_ASSIGNED_TOOLTIP' => '如果你希望创建的新纪录分配给其它人，请在这里选择缺省分配的用户。',
+    'LBL_EXTERNAL_TEAM_TOOLTIP' => '如果你希望创建的新纪录分配给其它组，请在这里选择缺省分配的组。',
+);
+
+global $timedate;
+?>
